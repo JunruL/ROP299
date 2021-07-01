@@ -38,4 +38,4 @@ def transform(csv_file: str, txt_file: str, cols: List[int]) -> None:
 
 
 if __name__ == '__main__':
-    transform('survey.csv', 'GloVe-master/survey.txt', [8])
+    transform('survey.csv', 'GloVe-master/result1/survey.txt', [8])

@@ -16,11 +16,11 @@ make
 #fi
 
 CORPUS=sample.txt
-VOCAB_FILE=vocab.txt
-COOCCURRENCE_FILE=cooccurrence.bin
-COOCCURRENCE_SHUF_FILE=cooccurrence.shuf.bin
+VOCAB_FILE=result1/vocab.txt
+COOCCURRENCE_FILE=result1/cooccurrence.bin
+COOCCURRENCE_SHUF_FILE=result1/cooccurrence.shuf.bin
 BUILDDIR=build
-SAVE_FILE=vectors
+SAVE_FILE=result1/vectors
 VERBOSE=2
 MEMORY=4.0
 VOCAB_MIN_COUNT=5
