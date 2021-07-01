@@ -15,7 +15,7 @@ make
 #  rm text8.zip
 #fi
 
-CORPUS=sample.txt
+CORPUS=result1/survey.txt
 VOCAB_FILE=result1/vocab.txt
 COOCCURRENCE_FILE=result1/cooccurrence.bin
 COOCCURRENCE_SHUF_FILE=result1/cooccurrence.shuf.bin
