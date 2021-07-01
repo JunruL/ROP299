@@ -46,7 +46,7 @@ In this new folder, create an empty txt file named `survey.txt`
 - In `line 41`, change `'GloVe/result1/survey.txt'` to `'GloVe/resultx/survey.txt'`
 - In `line 41`, change `[8]` to the list of column numbers that you want use
 
-| column number | Question |
+| col num | Question |
 | --- | --- |
 | 8 | Why is this your preferred mode?  |
 | 18 | If you could change one thing about the way your online classes are designed, what would you change? Why? |
