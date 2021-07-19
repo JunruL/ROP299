@@ -16,15 +16,13 @@ def transform(csv_file: str, txt_file: str, cols: List[int]) -> None:
         for col_name in data:  # for the int representing columns in list cols
             for words in data[col_name]:  # for words in each column
                 if not pd.isnull(words):  # filter out the null value
-                    preprocess(words)
-                    file.write(str(words) + '\n')  # one row for each response
+                    file.write(preprocess(words) + '\n')  # one row for each response
 
 
-def preprocess(text: str) -> None:
+def preprocess(text: str) -> str:
     """Preprocess <text>."""
     # lower case
     text = text.lower()
-    print(text)
     # remove punctuation
     text = "".join([word for word in text if word not in string.punctuation])
     # tokenization
@@ -37,7 +35,8 @@ def preprocess(text: str) -> None:
     text = [porter.stem(word) for word in text]
     # rejoin processed words into a str
     text = " ".join(text)
+    return text
 
 
 if __name__ == '__main__':
-    transform('survey.csv', 'GloVe/result1/survey1.txt', [8])
+    transform('survey.csv', 'GloVe/result1/survey.txt', [8])

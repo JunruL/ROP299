@@ -97,4 +97,4 @@ def extract_key_word(csv_file: str, txt_file: str, col: int, max_df: float = 1, 
 
 
 if __name__ == '__main__':
-    print(extract_key_word('coded_data.csv', 'key_words.txt', 8, 0.85, 3))
+    extract_key_word('coded_data.csv', 'key_word.txt', 8, 0.85, 1)
