@@ -95,8 +95,7 @@ def tf_idf(preprocessed_corpus: list) -> Tuple[list, list]:
     return (weight, key_words)
 
 
-def k_means(n: int, weight: list,
-            corpus: list, key_word: list) -> tuple[KMeans, list]:
+def k_means(n: int, weight: list) -> tuple[KMeans, list]:
     """Do clustering using the k-means algorithm.
     n: number of clusters
     """
@@ -171,7 +170,7 @@ def clustering(txt_file: str, csv_file: str, n: int) -> None:
     """
     corpus, preprocessed_corpus = generate_corpus(txt_file)
     weight, key_words = tf_idf(preprocessed_corpus)
-    kmeans, clusters = k_means(n, weight, corpus, key_words)
+    kmeans, clusters = k_means(n, weight)
     generate_graph(weight, kmeans, key_words)
     generate_result_file(csv_file, clusters, key_words, corpus, preprocessed_corpus)
 
