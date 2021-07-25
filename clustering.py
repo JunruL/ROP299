@@ -10,6 +10,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from typing import Tuple
 import string
+import os
 
 
 def preprocess(text: str) -> str:
@@ -160,7 +161,7 @@ def generate_result_file(csv_file: str, clusters: list, key_words: list,
     df.to_csv(csv_file, index=False)
 
 
-def clustering(txt_file: str, csv_file: str, n: int) -> None:
+def clustering(data_file: str, result_file: str, col: int, n: int) -> None:
     """Do clustering using tf-idf and k-means.
     Note:
         txt_file is a text file that stores the responses.
@@ -168,14 +169,15 @@ def clustering(txt_file: str, csv_file: str, n: int) -> None:
         refer to the document of function generate_result_file)
         n is the number of clusters.
     """
-    corpus, preprocessed_corpus = generate_corpus(txt_file)
+    csv_to_txt(data_file, 'temp.txt', col)
+    corpus, preprocessed_corpus = generate_corpus('temp.txt')
     weight, key_words = tf_idf(preprocessed_corpus)
     kmeans, clusters = k_means(n, weight)
     generate_graph(weight, kmeans, key_words)
-    generate_result_file(csv_file, clusters, key_words, corpus, preprocessed_corpus)
+    generate_result_file(result_file, clusters, key_words, corpus, preprocessed_corpus)
+    os.remove('temp.txt')
 
 
 if __name__ == '__main__':
     # generate a text file storing the responses in column 8 of coded_data.csv
-    csv_to_txt('coded_data.csv', 'col_8.txt', 8)
-    clustering('col_8.txt', 'col_8_result.csv', 10)
+    clustering('coded_data.csv', 'col_8_result.csv', col=8, n=10)
