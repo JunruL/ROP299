@@ -72,3 +72,13 @@ The code of this part was written based on tutorial [Extracting Keywords with TF
   - ```8``` is the column number (see the corresponding question in the table above) that we want to do the key word extracting
   - ```0.85``` means ignoring all words that have appeared in 85% of the documents, since those may be unimportant.
   - ```1``` means extracting only 1 key word for each document (response)
+
+### 2. Key Words Extracting
+The code of this part was written based on tutorial [Extracting Keywords with TF-IDF and Python’s Scikit-Learn](https://kavita-ganesan.com/extracting-keywords-from-text-tfidf/#.YPmEgi-1HRa). The algorithm used here is [TF-IDF](https://towardsdatascience.com/tf-idf-for-document-ranking-from-scratch-in-python-on-real-world-dataset-796d339a4089).
+
+- The existing code to run the file is ``` extract_key_word('coded_data.csv', 'key_word.txt', 8, 0.85, 1)```, where
+  - ```'coded_data.csv'``` is the csv file that we want to extract the keywords from
+  - ```'key_word.txt'``` is the text file that the result will be saved in
+  - ```8``` is the column number (see the corresponding question in the table above) that we want to do the key word extracting
+  - ```0.85``` means ignoring all words that have appeared in 85% of the documents, since those may be unimportant.
+  - ```1``` means extracting only 1 key word for each document (response)

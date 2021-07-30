@@ -307,7 +307,7 @@ int save_params(int nb_iter) {
             if (strcmp(word, "<unk>") == 0) {free(word); fclose(fid); fclose(fout);  return 1;}
             fprintf(fout, "%s",word);
             if (model == 0) { // Save all parameters (including bias)
-                for (b = 0; b < (vector_size + 1); b++) fprintf(fout," %lf", W[a * (vector_size + 1) + b]);
+                // for (b = 0; b < (vector_size + 1); b++) fprintf(fout," %lf", W[a * (vector_size + 1) + b]);
                 for (b = 0; b < (vector_size + 1); b++) fprintf(fout," %lf", W[(vocab_size + a) * (vector_size + 1) + b]);
             }
             if (model == 1) // Save only "word" vectors (without bias)

@@ -69,6 +69,6 @@ def txt_to_csv(txt_file: str, csv_file: str) -> None:
 
 
 if __name__ == '__main__':
-    txt_to_csv('GloVe/result1/vectors.txt', 'vectors.csv')
+    txt_to_csv('GloVe/result/vectors.txt', 'vectors.csv')
     key_words_to_vectors('key_word.txt', 'vectors.csv', 'key_word_vector.csv')
     clustering('coded_data.csv', 'key_word_vector.csv', 'k_means_results.txt', 5, 8)
