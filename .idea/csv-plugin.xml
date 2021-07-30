@@ -17,13 +17,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/key_word_vector1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="/survey.csv">
           <value>
             <Attribute>

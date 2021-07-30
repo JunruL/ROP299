@@ -15,12 +15,12 @@ make
 #  rm text8.zip
 #fi
 
-CORPUS=result1/survey.txt
-VOCAB_FILE=result1/vocab.txt
-COOCCURRENCE_FILE=result1/cooccurrence.bin
-COOCCURRENCE_SHUF_FILE=result1/cooccurrence.shuf.bin
+CORPUS=result3/survey.txt
+VOCAB_FILE=result3/vocab.txt
+COOCCURRENCE_FILE=result3/cooccurrence.bin
+COOCCURRENCE_SHUF_FILE=result3/cooccurrence.shuf.bin
 BUILDDIR=build
-SAVE_FILE=result1/vectors
+SAVE_FILE=result3/vectors
 VERBOSE=2
 MEMORY=4.0
 VOCAB_MIN_COUNT=1

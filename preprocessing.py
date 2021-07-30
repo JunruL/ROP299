@@ -39,4 +39,4 @@ def preprocess(text: str) -> str:
 
 
 if __name__ == '__main__':
-    transform('survey.csv', 'GloVe/result1/survey.txt', [8])
+    transform('survey.csv', 'GloVe/result3/survey.txt', [8])
