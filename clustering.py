@@ -116,7 +116,7 @@ def k_means(n: int, weight: list) -> tuple[KMeans, list]:
     return (k_means, cluster_members_list)
 
 
-def generate_graph(weight: list, k_means: KMeans, key_words: list) -> None:
+def generate_graph(weight: list, k_means: KMeans, labels: list, num: int = 100) -> None:
     """Generate a graph based on the k-means clustering result.
     Use TSNE algorithm to reduce the dimensionality.
     """
@@ -128,14 +128,14 @@ def generate_graph(weight: list, k_means: KMeans, key_words: list) -> None:
         x.append(i[0])
         y.append(i[1])
 
-    plt.scatter(x, y, c=k_means.labels_, marker=".")  # scatter plot
+    plt.scatter(x[0:num], y[0:num], c=k_means.labels_[0:num], marker=".")  # scatter plot
     # Remove the labels on the axes
     plt.xticks(())
     plt.yticks(())
-    for i in range(len(x)):
+    for i in range(len(x[0:num])):
         # add an annotation to each point, which is the key word of each response
         # xytext is used for the coordinate of the label
-        plt.annotate(key_words[i], xy=(x[i], y[i]), xytext=(x[i] + 0.1, y[i] + 0.1))
+        plt.annotate(labels[i], xy=(x[i], y[i]), xytext=(x[i] + 0.1, y[i] + 0.1))
     plt.show()
 
 
@@ -156,7 +156,7 @@ def generate_result_file(csv_file: str, clusters: list, key_words: list,
             info['key word'].append(key_words[idx])
             info['response'].append(corpus[idx])
             info['processed response'].append(preprocessed_corpus[idx])
-    # create a dataframe use info
+    # create a dataframe using info
     df = pd.DataFrame(info)
     df.to_csv(csv_file, index=False)
 
@@ -180,4 +180,4 @@ def clustering(data_file: str, result_file: str, col: int, n: int) -> None:
 
 if __name__ == '__main__':
     # generate a text file storing the responses in column 8 of coded_data.csv
-    clustering('coded_data.csv', 'col_8_result.csv', col=8, n=10)
+    clustering('coded_data.csv', 'col_8_result.csv', col=18, n=10)
