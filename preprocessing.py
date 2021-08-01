@@ -7,6 +7,11 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import string
 
+QUESTIONS = {7: '2. What is your preferred mode of teaching for online courses.',
+             8: 'Why is this your preferred mode? ',
+             26: '10. Do you prefer online or in person courses? ',
+             27: '11. Why do you prefer online or in-person courses? '}
+
 
 def transform(csv_file: str, txt_file: str, cols: List[int]) -> None:
     """Extract the free responses in <csv_file> and store them in <txt_file>.
@@ -17,6 +22,18 @@ def transform(csv_file: str, txt_file: str, cols: List[int]) -> None:
             for words in data[col_name]:  # for words in each column
                 if not pd.isnull(words):  # filter out the null value
                     file.write(preprocess(words) + '\n')  # one row for each response
+
+
+def filter_and_transform(csv_file: str, txt_file: str, cols: List[int], filter: str) -> None:
+    """filter the text with cols[0] being <filter>."""
+    data = pd.read_csv(csv_file, usecols=cols)  # read csv file in the folder
+    filter_col = QUESTIONS[cols[0]]
+    data = data.loc[data[filter_col] == filter]
+    with open(txt_file, 'a+', encoding='utf-8') as file:
+        question_col = QUESTIONS[cols[1]]
+        for words in data[question_col]:  # for words in each column
+            if not pd.isnull(words):  # filter out the null value
+                file.write(preprocess(words) + '\n')  # one row for each response
 
 
 def preprocess(text: str) -> str:
@@ -39,4 +56,11 @@ def preprocess(text: str) -> str:
 
 
 if __name__ == '__main__':
-    transform('coded_data.csv', 'GloVe/result/survey_data.txt', [8])
+    filter_and_transform('coded_data.csv', 'GloVe/col_8_live/survey_data.txt',
+                         [7, 8], 'Live classes (ie: Zoom, google meet etc.)')
+    filter_and_transform('coded_data.csv', 'GloVe/col_8_recorded/survey_data.txt',
+                         [7, 8], 'Recorded Lectures/Videos')
+    filter_and_transform('coded_data.csv', 'GloVe/col_27_online/survey_data.txt',
+                         [26, 27], 'Online Courses')
+    filter_and_transform('coded_data.csv', 'GloVe/col_27_in_person/survey_data.txt',
+                         [26, 27], 'In-person Courses')
