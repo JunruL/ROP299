@@ -70,7 +70,7 @@ The code of this part was written based on tutorial [Extracting Keywords with TF
 - Run the file ```ripa_formula.py``` in ```GloVe``` folder.
 
 #### 3.2 Word embedding
-- Run the file ```word_embedding_bias.py``` in ```GloVe folder.
+- Run the file ```word_embedding_bias.py``` in ```GloVe``` folder.
 
 ### 3. Bias analysis
 
