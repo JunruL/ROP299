@@ -11,6 +11,7 @@ from nltk.stem.porter import PorterStemmer
 from typing import Tuple
 import string
 import os
+import random
 
 
 def preprocess(text: str) -> str:
@@ -116,7 +117,7 @@ def k_means(n: int, weight: list) -> tuple[KMeans, list]:
     return (k_means, cluster_members_list)
 
 
-def generate_graph(weight: list, k_means: KMeans, labels: list, num: int = 100) -> None:
+def generate_graph(weight: list, k_means: KMeans, labels: list, num: int) -> None:
     """Generate a graph based on the k-means clustering result.
     Use TSNE algorithm to reduce the dimensionality.
     """
@@ -128,11 +129,15 @@ def generate_graph(weight: list, k_means: KMeans, labels: list, num: int = 100) 
         x.append(i[0])
         y.append(i[1])
 
-    plt.scatter(x[0:num], y[0:num], c=k_means.labels_[0:num], marker=".")  # scatter plot
+    left = random.randint(0, (len(x) // num) - 1) * num
+    right = left + num
+
+    # scatter plot
+    plt.scatter(x[left:right], y[left:right], c=k_means.labels_[left:right], marker=".")
     # Remove the labels on the axes
     plt.xticks(())
     plt.yticks(())
-    for i in range(len(x[0:num])):
+    for i in range(left, right):
         # add an annotation to each point, which is the key word of each response
         # xytext is used for the coordinate of the label
         plt.annotate(labels[i], xy=(x[i], y[i]), xytext=(x[i] + 0.1, y[i] + 0.1))
@@ -161,7 +166,7 @@ def generate_result_file(csv_file: str, clusters: list, key_words: list,
     df.to_csv(csv_file, index=False)
 
 
-def clustering(data_file: str, result_file: str, col: int, n: int) -> None:
+def clustering(data_file: str, result_file: str, col: int, n: int, point_nums: int = 100) -> None:
     """Do clustering using tf-idf and k-means.
     Note:
         txt_file is a text file that stores the responses.
@@ -173,11 +178,11 @@ def clustering(data_file: str, result_file: str, col: int, n: int) -> None:
     corpus, preprocessed_corpus = generate_corpus('temp.txt')
     weight, key_words = tf_idf(preprocessed_corpus)
     kmeans, clusters = k_means(n, weight)
-    generate_graph(weight, kmeans, key_words)
+    generate_graph(weight, kmeans, key_words, point_nums)
     generate_result_file(result_file, clusters, key_words, corpus, preprocessed_corpus)
     os.remove('temp.txt')
 
 
 if __name__ == '__main__':
     # generate a text file storing the responses in column 8 of coded_data.csv
-    clustering('coded_data.csv', 'col_8_result.csv', col=18, n=10)
+    clustering('coded_data.csv', 'col_18_result1.csv', col=18, n=20)
