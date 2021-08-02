@@ -56,11 +56,7 @@ def preprocess(text: str) -> str:
 
 
 if __name__ == '__main__':
-    filter_and_transform('coded_data.csv', 'GloVe/col_8_live/survey_data.txt',
-                         [7, 8], 'Live classes (ie: Zoom, google meet etc.)')
-    filter_and_transform('coded_data.csv', 'GloVe/col_8_recorded/survey_data.txt',
-                         [7, 8], 'Recorded Lectures/Videos')
-    filter_and_transform('coded_data.csv', 'GloVe/col_27_online/survey_data.txt',
-                         [26, 27], 'Online Courses')
-    filter_and_transform('coded_data.csv', 'GloVe/col_27_in_person/survey_data.txt',
-                         [26, 27], 'In-person Courses')
+    filter_and_transform('coded_data.csv', 'GloVe/col_8_materials/survey_data.txt',
+                         [7, 8], 'Uploaded or emailed Materials')
+    filter_and_transform('coded_data.csv', 'GloVe/col_8_discussion/survey_data.txt',
+                         [7, 8], 'Discussion forums/chats')
