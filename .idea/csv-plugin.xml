@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/col_18_result_rerunning.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/col_25_result.csv">
           <value>
             <Attribute>
