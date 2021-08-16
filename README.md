@@ -48,9 +48,11 @@ In this new folder, create an empty txt file named `survey.txt`
 
 | col num | Question |
 | --- | --- |
+| 7 | What is your preferred mode of teaching for online courses.  |
 | 8 | Why is this your preferred mode?  |
 | 18 | If you could change one thing about the way your online classes are designed, what would you change? Why? |
 | 25 | If you could change one thing about the way your in-person classes are designed, what would you change? Why?  |
+| 27 | Do you prefer online or in person courses? |
 | 27 | Why do you prefer online or in person courses?  |
 
 - Run `preprocessing.py`, and you will see the generated text in `GloVe/resultx/survey.txt`.
